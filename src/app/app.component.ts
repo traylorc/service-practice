@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { UserService } from './services/user.service';
+
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,17 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'service-tutorial';
+  
+  constructor(private usersvc: UserService) 
+  {
+
+  }
+
+  ngOnInit(): void
+  {
+    this.usersvc.list().subscribe(
+      res => {console.log(res);}
+    );
+  }
+
 }
